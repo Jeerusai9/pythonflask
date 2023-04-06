@@ -1,0 +1,35 @@
+pipeline {
+  agent any
+  tools {
+    python 'Python 3.9.7'
+  }
+  stages {
+    stage('Checkout') {
+      steps {
+        checkout scm
+      }
+    }
+    stage('Install Dependencies') {
+      steps {
+        sh 'pip install -r requirements.txt'
+      }
+    }
+    stage('Test') {
+      steps {
+        sh 'pytest tests/'
+      }
+    }
+    stage('Build') {
+      steps {
+        sh 'python setup.py sdist bdist_wheel'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        withCredentials([usernamePassword(credentialsId: '20a91a04k8@aec.edu.in', usernameVariable: 'Jeerusai9', passwordVariable: 'Jaisai143@.com')]) {
+          sh 'twine upload --username $Risingphoenix --password $Sai@2003/*'
+        }
+      }
+    }
+  }
+}
