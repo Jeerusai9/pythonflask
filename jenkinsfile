@@ -27,7 +27,7 @@ pipeline {
     stage('Deploy') {
       steps {
         withCredentials([usernamePassword(credentialsId: '20a91a04k8@aec.edu.in', usernameVariable: 'Jeerusai9', passwordVariable: 'Jaisai143@.com')]) {
-          sh 'twine upload --username $Risingphoenix --password $Sai@2003/*'
+          sh 'twine upload --username Risingphoenix --password Sai@2003/*'
         }
       }
     }
